@@ -1,4 +1,4 @@
-Speedle
+#Speedle
 =======
 
 Speedle is a React application built with TypeScript. It provides a simple, clean and fast way to browse popular websites and services.
@@ -9,6 +9,11 @@ Features
 -   Fast loading speeds
 -   Responsive design for optimal viewing on all devices
 -   Easy navigation with minimalistic interface
+
+Gameplay
+--------
+
+Speedle is a game in which you need to guess the correct word before the timer runs out. The game starts when you click the start button and ends when the time is up. The words are randomly generated and appear one by one on the screen. Your goal is to guess all 3 words correctly before the timers run out. There are 3 rounds: 5 minutes, 3 minutes and 1 minute. 
 
 Getting Started
 ---------------
