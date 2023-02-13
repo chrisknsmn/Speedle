@@ -1,2 +1,4 @@
-# Speedle
- Timed word game using React and Typescript
+
+
+<!-- https://dev.to/alekseiberezkin/setting-up-react-typescript-app-without-create-react-app-oph -->
+
