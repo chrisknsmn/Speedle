@@ -17,13 +17,13 @@ To run the application locally, follow these steps:
 
 1.  Clone the repository to your local machine:
 
-bashCopy code
+Copy code
 
 `git clone https://github.com/chrisknsmn/Speedle.git`
 
 1.  Navigate to the project directory:
 
-bashCopy code
+Copy code
 
 `cd Speedle`
 
@@ -35,7 +35,7 @@ Copy code
 
 1.  Start the development server:
 
-sqlCopy code
+Copy code
 
 `npm start`
 
