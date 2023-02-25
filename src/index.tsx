@@ -5,6 +5,7 @@ import './index.css'
 import './index.js'
 import { validWords, emojis } from './wordList'
 
+let played: boolean = false;
 const words: string[] = [validWords[random(12000)],validWords[random(12000)],validWords[random(12000)]];
 
 console.log(words);
@@ -93,9 +94,7 @@ const Game = () => {
                         </button>
                     </div>
                 </header>
-                {/* <button onClick={clearLocalstorage}>
-                    reset
-                </button> */}
+                {/* <button onClick={clearLocalstorage}>reset</button> */}
                 <div id="start-div" onClick={onClick}>
                     { showStart && round < 3 ? <Start /> : null }
                 </div>
@@ -276,7 +275,10 @@ const PrintBoard = () => {
                 }
                 setTime((prevTime: number) => timeDuration[round]);
                 if(round >= 3) {
-                    updateLocalstorage();
+                    if(played == false) {
+                        updateLocalstorage();
+                        played = true;
+                    }
                     root.render(<Game />);
                 } else {
                     guessCount = 1;

@@ -37,7 +37,6 @@ h1 {
 }
 
 .header-btns {
-    /* border: solid red; */
     max-width: 100px;
     position: absolute;
     top: 20px;
@@ -48,23 +47,32 @@ h1 {
     border: none;
     font-size: 1.4rem;
     transition: 0.5s;
-
     background-color: var(--white);
-    
 }
 .rules-btn:hover {
     color: var(--grey-border);
 }
-
 .rules-btn svg {
     fill: var(--black);
     height: 30px;
     width: 30px;
-
     transition: all .2s ease-in-out;
 }
 .rules-btn svg:hover {
     fill: var(--grey-border);
+}
+
+@media only screen and (max-width: 640px) {
+    .header-btns {
+        right: 15px;
+        top: 20px;
+    }
+    .rules-btn svg {
+        fill: var(--black);
+        height: 20px;
+        width: 20px;
+        transition: all .2s ease-in-out;
+    }
 }
 
 .close-btn {
@@ -147,14 +155,13 @@ h1 {
     display: flex;
     margin: 0 auto;
     width: 100%;
-    max-width: 330px;
+    /* max-width: 330px; */
+    max-width: 270px;
 }
 .cell {
     border: 3px solid #9E9E9E;
     text-align: center;
     border-radius: 50px;
-    height: 50px;
-    width: 50px;
     position: relative;
 
     margin-top: 5px;
@@ -162,19 +169,24 @@ h1 {
     margin-left: 5px;
     margin-right: 5px;
 
+    /* height: 50px;
+    width: 50px;
     font-size: 1.6rem;
-    line-height: 3rem;
+    line-height: 3rem; */
+    height: 38px;
+    width: 40px;
+    font-size: 1.2rem;
+    line-height: 2.4rem;
 }
 @media only screen and (max-width: 640px) {
     .row {
         max-width: 270px;
     }
     .cell {
-        height: 40px;
+        height: 38px;
         width: 40px;
-
         font-size: 1.2rem;
-        line-height: 2.5rem;
+        line-height: 2.4rem;
     }
 }
 
