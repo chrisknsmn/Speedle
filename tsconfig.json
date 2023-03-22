@@ -1,6 +1,10 @@
 {
     "compilerOptions": {
+      "types": [
+        "react"
+      ],
       "esModuleInterop": true,
+      "resolveJsonModule": true,
       "jsx": "react",
       "module": "esnext",
       "moduleResolution": "node",

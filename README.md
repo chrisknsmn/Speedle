@@ -46,6 +46,12 @@ Copy code
 
 The application should now be running on `http://localhost:3000/`.
 
+1. Build project:
+
+Copy code
+
+`npm run build`
+
 Technology Stack
 ----------------
 
