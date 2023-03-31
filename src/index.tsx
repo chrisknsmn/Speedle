@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'
@@ -163,18 +163,25 @@ type ResultProps = {
     setShowResults: (state: boolean) => void
 };
 played = false;
+
 const Results = ({ showResults, setShowResults }: ResultProps) => {
+    const [showPopup, setShowPopup] = useState(false);
+    const share = () => {
+        setShowPopup(true);
+    };
+    const shareHide = () => {
+        if(showPopup == true) {
+            setShowPopup(false);
+        }
+    };
     return(
-        <div className={showResults ? "result-card showCard" : "result-card hideCard"}>
+        <div className={showResults ? "result-card showCard" : "result-card hideCard"} onClick={shareHide}>
             <div className='results-inner'>
             <button className='close-btn' onClick={() => setShowResults(!showResults)} aria-label="close">
                 <svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path d="m14.41 3.27-.82-.94L8 7.17 2.41 2.33l-.82.94L7.05 8l-5.46 4.73.82.94L8 8.83l5.59 4.84.82-.94L8.95 8l5.46-4.73z"/></svg>
             </button>
             <h2 className='mar-t-0'>Statistics</h2>
             <div>
-
-                {/* <h3>Today's words:</h3> */}
-
                 {played && (
                     <div>
                         <h3>Today's words:</h3>
@@ -183,7 +190,6 @@ const Results = ({ showResults, setShowResults }: ResultProps) => {
                         <p className='mar-tb-0'>🔴 {words[2]}</p>
                     </div>
                 )}
-
             </div>
             <div>
                 <h3>Games played: { localStorage.getItem('speedleGamesPlayed') }</h3>
@@ -225,7 +231,18 @@ const Results = ({ showResults, setShowResults }: ResultProps) => {
                     ></div>
                 </div>
             </div>
-            <button id="share-btn" onClick={share}>SHARE</button>
+
+            <button id="share-btn" onClick={share}>
+                SHARE
+
+                {showPopup && (
+                    <div id="popup">
+                        Results Copied
+                    </div>
+                )}
+
+            </button>
+
             </div>
         </div>
     )
@@ -299,7 +316,12 @@ const PrintBoard = () => {
 
     const updateLetter = (letter: string) => {
         if(played != true) {
-            if(complete == true || guessCount > (wordsPerRound)) {
+            //Start next round when max humbers entered.
+            if(guessCount == 6 && myword[guessCount][3] != ' ') {
+                complete = true;
+            }
+            if(complete == true || guessCount > wordsPerRound) {
+                console.log("test");
                 if(letter = "Enter") {
                     if( guessCount <= 1 ) {
                         results[round+1] = myword[guessCount].split('');
@@ -319,7 +341,6 @@ const PrintBoard = () => {
                         if(played == false) {
                             updateLocalstorage();
                             played = true;
-                            // data.played = "true";
                         }
                         root.render(<Game />);
                         // loadData();
@@ -380,14 +401,15 @@ const PrintBoard = () => {
         }
         
     }
-
     let maxRound: number = round;
     if(maxRound > 2) {
         maxRound = 2;
     }
-
     return (
         <div id="board-inner">
+            <div className="round">
+                Round {round+1}
+            </div>
             <div id="clock">
                 {fomattedTime}
             </div>
@@ -606,8 +628,6 @@ async function loadData() {
     }
     
     root.render(<Game />);
-
-    
 
 }
   

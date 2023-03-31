@@ -20,7 +20,10 @@
 
     --border: #fafafa;
 }
-
+html,
+body {
+  height: 100%;
+}
 body {
     color: #2b2b2b;
     font-family: Arial, Helvetica, sans-serif;
@@ -28,7 +31,6 @@ body {
     color: var(--black);
     background-color: var(--white);
 }
-
 header {
     background-color: var(--white);
     color: var(--black);
@@ -36,7 +38,6 @@ header {
     box-shadow: 0px 4px 4px var(--shadow);
     border-bottom: 1px solid var(--border);
 }
-
 h1 {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -47,7 +48,6 @@ h1 {
         font-size: 1.4rem;
     }
 }
-
 .header-btns {
     position: absolute;
     top: 20px;
@@ -75,7 +75,6 @@ h1 {
 .rules-btn svg:hover {
     fill: var(--grey-border);
 }
-
 @media only screen and (max-width: 640px) {
     .header-btns {
         right: 5px;
@@ -86,7 +85,6 @@ h1 {
         width: 20px;
     }
 }
-
 .close-btn {
     background-color: var(--white);
     position: absolute;
@@ -106,7 +104,6 @@ h1 {
 .close-btn:hover svg {
     fill: var(--grey-border);
 }
-
 .mar-r-0 {
     margin-right: 0 !important;
 }
@@ -120,7 +117,6 @@ h1 {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
-
 .mar-t {
     margin-top: 10px;
 }
@@ -131,77 +127,44 @@ h1 {
 .hide {
     display: none !important;
 }
-/* #start-div {
-    width: 100px;
-    margin: 0 auto;
-    height: 80vh;
-    border: solid red;
-}
-
-.start-container {
-    text-align: center;
-    text-align: center;
-    margin: 0 auto;
-    max-width: 100px;
-    margin-top: 120px;
-    flex: 1;
-} */
 #start {
     text-align: center;
     padding: 20px;
     border-radius: 5px;
     transition: 0.5s;
-
-    /* color: var(--black); */
     color: white;
-
     background-color: rgb(67, 115, 67);
     box-shadow: 0px 4px 4px var(--shadow);
-
-    /* border: 1px solid var(--border); */
-
     max-width: 100px;
-
     margin: 0 auto;
-
     position: absolute;
-
     top: 40%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-
     left: 50%;
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-
 }
 #start:hover {
     cursor: pointer;
-    /* background-color: rgb(189, 189, 189); */
     background-color: rgb(138, 183, 138);
 }
-
-html,
-body {
-  height: 100%;
+.round {
+    max-width: 80px;
+    margin: 0 auto;
+    margin-top: 15px;
 }
-
 
 /* GAMRE BOARD */
 #app-root {
-    
-    /* border: solid blue; */
     height: 100vh;
     max-height: 100%;
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
-
     overflow: scroll !important;
-
     box-sizing: content-box;
-
 }
 body::-webkit-scrollbar{
     display: none !important;
@@ -209,7 +172,6 @@ body::-webkit-scrollbar{
 #app-root::-webkit-scrollbar {
     display: none !important;
 }
-
 #page {
     display: flex;
     flex-direction: column;
@@ -223,41 +185,25 @@ body::-webkit-scrollbar{
     flex-grow: 1;
 }
 #board-container {
-    /* border: solid yellow; */
-    max-width: 1200px;
     margin: 0 auto;
-    max-width: 100%;
-    
     display: flex;
     flex-direction: column;
     position: relative;
     flex-grow: 1;
 }
-/* @media only screen and (max-width: 640px) {
-    #board-container {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-} */
 #board-inner {
-    /* border: solid green; */
     display: flex;
     flex-direction: column;
-    /* position: relative; */
     flex-grow: 1;
 }
 #board {
-    /* border: solid red; */
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     max-width: 100%;
-
     justify-content: center;
 }
-
 .row {
-    /* border: solid red; */
     display: flex;
     margin: 0 auto;
     width: 100%;
@@ -271,17 +217,13 @@ body::-webkit-scrollbar{
     text-align: center;
     border-radius: 50px;
     position: relative;
-
     margin: 3px;
     min-height: 42px;
     max-height: 42px;
-    /* height: 30px; */
-    
     height: auto;
     width: 20%;
     font-size: 1.2rem;
     line-height: 2.4rem;
-
     color: #2B2B2B;
 }
 @media only screen and (max-width: 800px) {
@@ -299,19 +241,6 @@ body::-webkit-scrollbar{
         max-width: 30px;
     }
 }
-/* @media only screen and (max-width: 640px) {
-    .row {
-        max-width: 160px;
-        max-height: 40px;
-    }
-    .cell {
-        border: 2px solid #9E9E9E;
-        font-size: 1.0rem;
-        line-height: 1.5rem;
-        min-height: 23px;
-        max-height: 23px;
-    }
-} */
 
 .wrong {
     transition: 1s;
@@ -345,7 +274,6 @@ body::-webkit-scrollbar{
         border: 2px solid var(--yellow-border) !important;
     }
 }
-
 .error {
     animation: shake 0.5s;
 }
@@ -355,45 +283,50 @@ body::-webkit-scrollbar{
     40% { transform: translate(3px, 0px) rotate(0deg); }
     60% { transform: translate(-3px, 0px) rotate(0deg); }
 }
-
 /* TYPING KEYBOARD */
 .keyboard-container {
-    width: 100%;
+    width: 100vw;
     margin: 0 auto;
     padding-bottom: 5px;
-    /* border: solid red; */
     max-width: 100%;
     margin-top: 15px;
-
 }
 .keyboard {
-    /* display: flex; */
-    max-width: 330px;
+    max-width: 600px;
     width: 100%;
     margin: 0 auto;
     background-color: var(--white);
 }
-
 .row1 {
     display: flex;
     margin: 0 auto;
+    width: 80%;
 }
 .row2 {
     display: flex;
     margin: 0 auto;
-    width: 294px;
-    max-width: 100%;
+    width: 70%;
     margin-top: 5px;
 }
 .row3 {
     display: flex;
     margin: 0 auto;
     margin-top: 5px;
-    /* width: 294px; */
-    max-width: 100%;
+    width: 80%;
+}
+@media only screen and (max-width: 455px) {
+    .row1 {
+        width: 100%;
+    }
+    .row2 {
+        width: 90%;
+    }
+    .row3 {
+        width: 100%;
+    }
 }
 .key {
-    width: 30px;
+    width: 50px;
     height: 30%;
     background-color: #E3E1E1;
     text-align: center;
@@ -408,7 +341,6 @@ body::-webkit-scrollbar{
     color: #2B2B2B;
 }
 .key:hover {
-    background-color: blue;
     cursor: pointer;
 }
 .key-dbl {
@@ -420,33 +352,26 @@ body::-webkit-scrollbar{
         cursor: pointer;
     }
 }
-
 #clock {
     margin: 0 auto;
-    /* border: solid red; */
     text-align: center;
     max-width: 330px;
     margin-top: 15px;
     margin-bottom: 15px;
 }
-
 .played-num {
     font-size: 32px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
-
 .results-inner {
     text-align: center;
 }
-
 .round-row {
     display: flex;
     max-width: 200px;
     margin: 0 auto;
     margin-top: 5px;
-
-
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -475,10 +400,8 @@ body::-webkit-scrollbar{
     background-color: #9E9E9E;
     transition: width 1s ease-in-out;
     /* overflow: scroll !important; */
-
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-
 }
 
 .red {
@@ -493,11 +416,9 @@ body::-webkit-scrollbar{
 .dark-grey {
     background-color: var(--grey-border);
 }
-
 .clockColor {
     color: red !important;
 }
-
 #share-btn {
     padding: 10px;
     margin-top: 30px;
@@ -505,31 +426,40 @@ body::-webkit-scrollbar{
     cursor: pointer;
     border-radius: 5px;
     transition: 0.5s;
+
+    position: relative;
 }
 #share-btn:hover {
     background-color: #9E9E9E;
 }
+#popup {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    
+    color: black;
+    background-color: var(--grey-border);
 
+    border-radius: 5px;
+    width: auto;
+    padding: 5px;
+
+}
 .result-card {
     width: 80%;
     max-width: 300px;
     min-height: 300px;
-
     position: absolute;
-
     margin: 0 auto;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-
     top: 20%;
-
     padding: 30px;
     background-color: var(--white);
     box-shadow: 0px 4px 4px var(--shadow);
     border: 1px solid var(--border);
     border-radius: 5px;
-    
 }
 .result-card-inner {
     max-width: 300px;
@@ -541,7 +471,6 @@ body::-webkit-scrollbar{
     opacity: 1;
     visibility: visible;
 }
-
 @keyframes slideIn {
     0% { 
         transform: translate(-50%, 30px) rotate(0deg); 
@@ -550,14 +479,12 @@ body::-webkit-scrollbar{
         transform: translate(-50%, 0px) rotate(0deg); 
     }
 }
-
 .hideCard {
     transition: all .2s ease-in-out;
     animation: .2s ease-out 0s 1 slideOut;
     opacity: 0;
     visibility: hidden;
 }
-
 @keyframes slideOut {
     0% { 
         transform: translate(-50%, 0px) rotate(0deg); 
