@@ -1,6 +1,8 @@
 Speedle
 =======
 
+https://speedle.ca/
+
 Speedle is a React application built with TypeScript. It provides a simple, clean and fast way to browse popular websites and services.
 
 Features
