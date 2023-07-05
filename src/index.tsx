@@ -32,38 +32,38 @@ interface keyboardLayout {
 }
 function createKeyboardLayout(): keyboardLayout {
     return {
-        1: ["q","w","e","r","t", "y","u","i","o","p"],
-        2: ["a","s","d","f","g","h","j","k","l",],
-        3: ["ENT","z","x","c","v","b","n","m","DEL"]
+        1: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+        2: ["a", "s", "d", "f", "g", "h", "j", "k", "l",],
+        3: ["ENT", "z", "x", "c", "v", "b", "n", "m", "DEL"]
     } as const;
 }
 interface KeyProps {
     className?: string;
     keyValue: string,
     index: number,
-    clickKey: (letter: string,e:React.MouseEvent<HTMLDivElement>) => void
+    clickKey: (letter: string, e: React.MouseEvent<HTMLDivElement>) => void
 }
 
 interface GameBoard {
     [key: number]: string[];
 }
 const createGameBoard = (numRows: number, numCols: number): GameBoard => {
-    return Array.from({length: numRows}, (_, i) => i+1)
-    .reduce((acc, row) => {
-        acc[row] = new Array(numCols).fill('');
-        return acc;
-    }, {} as GameBoard);
+    return Array.from({ length: numRows }, (_, i) => i + 1)
+        .reduce((acc, row) => {
+            acc[row] = new Array(numCols).fill('');
+            return acc;
+        }, {} as GameBoard);
 };
 
 interface resultobj {
     [key: number]: string[];
 }
 const createObj = (numRows: number, numCols: number): resultobj => {
-    return Array.from({length: numRows}, (_, i) => i)
-    .reduce((acc, row) => {
-        acc[row] = new Array(numCols).fill('');
-        return acc;
-    }, {} as resultobj);
+    return Array.from({ length: numRows }, (_, i) => i)
+        .reduce((acc, row) => {
+            acc[row] = new Array(numCols).fill('');
+            return acc;
+        }, {} as resultobj);
 };
 
 let results = createObj(4, 5);
@@ -82,10 +82,10 @@ const Game = () => {
         setShowStart(false);
         setShowBoard(true);
     }
-    const clickRules = () => {setShowRules(prevState => !prevState);}
-    const clickResults = () => {setShowResults(prevState => !prevState);}
+    const clickRules = () => { setShowRules(prevState => !prevState); }
+    const clickResults = () => { setShowResults(prevState => !prevState); }
     const closeCard = () => {
-        if(showRules == true || showResults == true) {
+        if (showRules == true || showResults == true) {
             setShowRules(false);
             setShowResults(false);
         }
@@ -98,36 +98,35 @@ const Game = () => {
         }
     }, [round]);
     return (
-        <div id="page">
-            <div id="page-inner" onClick={closeCard}>
-                <header>
-                    <h1>SPEEDLE</h1>
-                    {/* <button onClick={clearLocalstorage}>Clear</button> */}
-                    <div className="header-btns">
-                        <button className="rules-btn" onClick={clickRules} aria-label="rules">
-                            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 .5A7.77 7.77 0 0 0 0 8a7.77 7.77 0 0 0 8 7.5A7.77 7.77 0 0 0 16 8 7.77 7.77 0 0 0 8 .5zm0 13.75A6.52 6.52 0 0 1 1.25 8 6.52 6.52 0 0 1 8 1.75 6.52 6.52 0 0 1 14.75 8 6.52 6.52 0 0 1 8 14.25z"/><circle cx="7.98" cy="10.95" r=".76"/><path d="M9.73 4.75A2.72 2.72 0 0 0 8 4.19a2.28 2.28 0 0 0-2.41 2.17v.11h1.24v-.1A1.12 1.12 0 0 1 8 5.33a1 1 0 0 1 1.12 1c0 .35-.24.73-.78 1.11a2 2 0 0 0-1 1.46v.36h1.24V9a.76.76 0 0 1 .23-.51A3.92 3.92 0 0 1 9.33 8l.17-.14a2 2 0 0 0 .91-1.67 1.85 1.85 0 0 0-.68-1.44z"/></svg>
-                        </button>
-                        <button className="rules-btn" onClick={clickResults} aria-label="results">
-                            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 13.25V1.5H.5v12a1.24 1.24 0 0 0 1.22 1H15.5v-1.25z"/><path d="M3.15 8H4.4v3.9H3.15zm3.26-4h1.26v7.9H6.41zm3.27 2h1.25v5.9H9.68zm3.27-3.5h1.25v9.4h-1.25z"/></svg>
-                        </button>
-                    </div>
-                </header>
-                {/* <button onClick={clearLocalstorage}>reset</button> */}
-                <div id="start-div" onClick={onClick}>
-                    { showStart && played != true ? <Start /> : null }
+        <div id="page" onClick={closeCard}>
+            <header>
+                <h1>SPEEDLE</h1>
+                {/* <button onClick={clearLocalstorage}>Clear</button> */}
+                <div className="header-btns">
+                    <button className="rules-btn" onClick={clickRules} aria-label="rules">
+                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 .5A7.77 7.77 0 0 0 0 8a7.77 7.77 0 0 0 8 7.5A7.77 7.77 0 0 0 16 8 7.77 7.77 0 0 0 8 .5zm0 13.75A6.52 6.52 0 0 1 1.25 8 6.52 6.52 0 0 1 8 1.75 6.52 6.52 0 0 1 14.75 8 6.52 6.52 0 0 1 8 14.25z" /><circle cx="7.98" cy="10.95" r=".76" /><path d="M9.73 4.75A2.72 2.72 0 0 0 8 4.19a2.28 2.28 0 0 0-2.41 2.17v.11h1.24v-.1A1.12 1.12 0 0 1 8 5.33a1 1 0 0 1 1.12 1c0 .35-.24.73-.78 1.11a2 2 0 0 0-1 1.46v.36h1.24V9a.76.76 0 0 1 .23-.51A3.92 3.92 0 0 1 9.33 8l.17-.14a2 2 0 0 0 .91-1.67 1.85 1.85 0 0 0-.68-1.44z" /></svg>
+                    </button>
+                    <button className="rules-btn" onClick={clickResults} aria-label="results">
+                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 13.25V1.5H.5v12a1.24 1.24 0 0 0 1.22 1H15.5v-1.25z" /><path d="M3.15 8H4.4v3.9H3.15zm3.26-4h1.26v7.9H6.41zm3.27 2h1.25v5.9H9.68zm3.27-3.5h1.25v9.4h-1.25z" /></svg>
+                    </button>
                 </div>
-                <div id="board-container">
-                    { showBoard || played == true ? <PrintBoard /> : null }
-                </div>
+            </header>
+            {/* <button onClick={clearLocalstorage}>reset</button> */}
+            <div id="start-div" onClick={onClick}>
+                {showStart && played != true ? <Start /> : null}
             </div>
+
+            {showBoard || played == true ? <PrintBoard /> : null}
+
             <div className='cards'>
                 <div>
-                    { <Results showResults={showResults} setShowResults={setShowResults} /> }
+                    {<Results showResults={showResults} setShowResults={setShowResults} />}
                 </div>
                 <div>
-                    { <Rules showRules={showRules} setShowRules={setShowRules} /> }
+                    {<Rules showRules={showRules} setShowRules={setShowRules} />}
                 </div>
             </div>
+
         </div>
     )
 }
@@ -146,13 +145,13 @@ const Rules = ({ showRules, setShowRules }: RulesProps) => {
     return (
         <div className={showRules ? "result-card showCard" : "result-card hideCard"}>
             <button className='close-btn' onClick={() => setShowRules(!showRules)} aria-label="close">
-                <svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path d="m14.41 3.27-.82-.94L8 7.17 2.41 2.33l-.82.94L7.05 8l-5.46 4.73.82.94L8 8.83l5.59 4.84.82-.94L8.95 8l5.46-4.73z"/></svg>
+                <svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path d="m14.41 3.27-.82-.94L8 7.17 2.41 2.33l-.82.94L7.05 8l-5.46 4.73.82.94L8 8.83l5.59 4.84.82-.94L8.95 8l5.46-4.73z" /></svg>
             </button>
             <div className='result-card-inner'>
-            <h2>RULES</h2>
-            <p>Speedle consists of three rounds:<br /> 5 minutes, 3 minutes, and 1 minute.</p>
-            <p>In each round there are 6 tries to guess the word.</p>
-            <p>Correct guesses will be added to your final score.</p>
+                <h2>RULES</h2>
+                <p>Speedle consists of three rounds:<br /> 5 minutes, 3 minutes, and 1 minute.</p>
+                <p>In each round there are 6 tries to guess the word.</p>
+                <p>Correct guesses will be added to your final score.</p>
             </div>
         </div>
     );
@@ -170,78 +169,78 @@ const Results = ({ showResults, setShowResults }: ResultProps) => {
         setShowPopup(true);
     };
     const shareHide = () => {
-        if(showPopup == true) {
+        if (showPopup == true) {
             setShowPopup(false);
         }
     };
-    return(
+    return (
         <div className={showResults ? "result-card showCard" : "result-card hideCard"} onClick={shareHide}>
             <div className='results-inner'>
-            <button className='close-btn' onClick={() => setShowResults(!showResults)} aria-label="close">
-                <svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path d="m14.41 3.27-.82-.94L8 7.17 2.41 2.33l-.82.94L7.05 8l-5.46 4.73.82.94L8 8.83l5.59 4.84.82-.94L8.95 8l5.46-4.73z"/></svg>
-            </button>
-            <h2 className='mar-t-0'>Statistics</h2>
-            <div>
-                {played && (
-                    <div>
-                        <h3>Today's words:</h3>
-                        <p className='mar-tb-0'>🟢 {words[0]}</p>
-                        <p className='mar-tb-0'>🟡 {words[1]}</p>
-                        <p className='mar-tb-0'>🔴 {words[2]}</p>
+                <button className='close-btn' onClick={() => setShowResults(!showResults)} aria-label="close">
+                    <svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path d="m14.41 3.27-.82-.94L8 7.17 2.41 2.33l-.82.94L7.05 8l-5.46 4.73.82.94L8 8.83l5.59 4.84.82-.94L8.95 8l5.46-4.73z" /></svg>
+                </button>
+                <h2 className='mar-t-0'>Statistics</h2>
+                <div>
+                    {played && (
+                        <div>
+                            <h3>Today's words:</h3>
+                            <p className='mar-tb-0'>🟢 {words[0]}</p>
+                            <p className='mar-tb-0'>🟡 {words[1]}</p>
+                            <p className='mar-tb-0'>🔴 {words[2]}</p>
+                        </div>
+                    )}
+                </div>
+                <div>
+                    <h3>Games played: {localStorage.getItem('speedleGamesPlayed')}</h3>
+                </div>
+                <h3>Rounds won</h3>
+                <div className="round-row">
+                    <div className='round-label'>1</div>
+                    <div className='round-num green'>
+                        {localStorage.getItem('speedleRoundWinPercent0')}%
                     </div>
-                )}
-            </div>
-            <div>
-                <h3>Games played: { localStorage.getItem('speedleGamesPlayed') }</h3>
-            </div>
-            <h3>Rounds won</h3>
-            <div className="round-row">
-                <div className='round-label'>1</div>
-                <div className='round-num green'>
-                    { localStorage.getItem('speedleRoundWinPercent0') }%
-                </div>
-                <div className='round-bar'>
-                    <div 
-                        className='round-bar-inner green'
-                        style={ {width: localStorage.getItem('speedleRoundWinPercent0') + "%"} }
-                    ></div>
-                </div>
-            </div>
-            <div className="round-row mar-t">
-                <div className='round-label'>2</div>
-                <div className='round-num yellow'>
-                    { localStorage.getItem('speedleRoundWinPercent1') }%
-                </div>
-                <div className='round-bar'>
-                    <div 
-                        className='round-bar-inner yellow'
-                        style={ {width: localStorage.getItem('speedleRoundWinPercent1') + "%"} }
-                    ></div>
-                </div>
-            </div>
-            <div className="round-row mar-t">
-                <div className='round-label'>3</div>
-                <div className='round-num red'>
-                    { localStorage.getItem('speedleRoundWinPercent2') }%
-                </div>
-                <div className='round-bar'>
-                    <div 
-                        className='round-bar-inner red'
-                        style={ {width: localStorage.getItem('speedleRoundWinPercent2') + "%"} }
-                    ></div>
-                </div>
-            </div>
-
-            <button id="share-btn" onClick={share}>
-                SHARE
-
-                {showPopup && (
-                    <div id="popup">
-                        Results Copied
+                    <div className='round-bar'>
+                        <div
+                            className='round-bar-inner green'
+                            style={{ width: localStorage.getItem('speedleRoundWinPercent0') + "%" }}
+                        ></div>
                     </div>
-                )}
+                </div>
+                <div className="round-row mar-t">
+                    <div className='round-label'>2</div>
+                    <div className='round-num yellow'>
+                        {localStorage.getItem('speedleRoundWinPercent1')}%
+                    </div>
+                    <div className='round-bar'>
+                        <div
+                            className='round-bar-inner yellow'
+                            style={{ width: localStorage.getItem('speedleRoundWinPercent1') + "%" }}
+                        ></div>
+                    </div>
+                </div>
+                <div className="round-row mar-t">
+                    <div className='round-label'>3</div>
+                    <div className='round-num red'>
+                        {localStorage.getItem('speedleRoundWinPercent2')}%
+                    </div>
+                    <div className='round-bar'>
+                        <div
+                            className='round-bar-inner red'
+                            style={{ width: localStorage.getItem('speedleRoundWinPercent2') + "%" }}
+                        ></div>
+                    </div>
+                </div>
 
-            </button>
+                <button id="share-btn" onClick={share}>
+                    SHARE
+
+                    {showPopup && (
+                        <div id="popup">
+                            Results Copied
+                        </div>
+                    )}
+
+                </button>
 
             </div>
         </div>
@@ -266,33 +265,35 @@ const PrintBoard = () => {
     let [gameBoard, setGameBoard] = useState(createGameBoard(wordsPerRound, wordLength));
     let newBoard = createGameBoard(wordsPerRound, wordLength);
 
-    const timeDuration: number[] = [300,180,60];
+    const timeDuration: number[] = [300, 180, 60];
 
     const [time, setTime] = useState<setTime['time']>(timeDuration[round]);
 
     let fomattedTime: string = formatTime(time);
 
-    if(played == true) {
+    if (played == true) {
         fomattedTime = '';
     }
-
-    if(round >= 3) {
+    if (round >= 3) {
         fomattedTime = '';
     }
 
     useEffect(() => {
-        let intervalId = setInterval(() => {
-            if(played != true) {            
 
-                if (time > 0) {
-                    setTime(prevTime => prevTime - 1);
-                } else {
-                    clearInterval(intervalId);
-                    complete = true;
-                    updateLetter('Enter');
-                }
+        let intervalId = setInterval(() => {
+            if(words[round] == myword[guessCount-1]) {
+                complete = true;
             }
 
+            updateLetter('Enter');
+
+            if (time > 0) {
+                setTime(prevTime => prevTime - 1);
+            } else {
+                clearInterval(intervalId);
+                complete = true;
+                updateLetter('Enter');
+            }
         }, 1000);
         return () => {
             clearInterval(intervalId);
@@ -315,130 +316,162 @@ const PrintBoard = () => {
     }, []);
 
     const updateLetter = (letter: string) => {
-        if(played != true) {
-            //Start next round when max humbers entered.
-            if(guessCount == 6 && myword[guessCount][3] != ' ') {
-                complete = true;
-            }
-            if(complete == true || guessCount > wordsPerRound) {
-                console.log("test");
-                if(letter = "Enter") {
-                    if( guessCount <= 1 ) {
-                        results[round+1] = myword[guessCount].split('');
-                    } else {
-                        results[round+1] = myword[guessCount-1].split('');
-                    }
-                    complete = false;
-                    round += 1;
-                    for (let i = 0; i < myword.length; i++) {
-                        myword[i] = '';
-                        for (let j = 0; j < wordLength; j++) {
-                            myword[i] += ' ';
-                        }
-                    }
-                    setTime((prevTime: number) => timeDuration[round]);
-                    if(round >= 3) {
-                        if(played == false) {
-                            updateLocalstorage();
-                            played = true;
-                        }
-                        root.render(<Game />);
-                        // loadData();
-                    } else {
-                        guessCount = 1;
-                    }
-                }
+        
+        if (complete === true || guessCount > wordsPerRound) {
+            
+            if (guessCount <= 1) {
+                results[round + 1] = myword[guessCount].split('');
             } else {
-                //DELETE LETTER
-                if(letter == "Backspace" || letter == "DEL") {
-                    myword[guessCount] =  myword[guessCount].trim().slice(0, -1);
-                }
-                //check that input is a letter and add if word len in less that 5
-                if(/[a-zA-Z]/.test(letter) == true && letter.length < 2) {
-                    myword[guessCount] =  myword[guessCount].trim();
-                    if(myword[guessCount].length < wordLength) {
-                        myword[guessCount] += letter.toLowerCase();
-                    }
-                }
-                if(letter == "Enter" || letter == "ENT") {
-                    //If the min num of letters per word has been met
-                    if(myword[guessCount].trim().length >= wordLength) {
-                        // If the words is a valid word
-                        if( validWords.includes(myword[guessCount]) == true ) {
-                            //If guess matches correct word
-                            if(words[round] == myword[guessCount]) {
-                                complete = true;
-                            }
-                            guessCount += 1;
-                            myword[guessCount] = '';
-                        } else {
-                            invalid = true;
-                        }
-                    }
+                results[round + 1] = myword[guessCount - 1].split('');
+            }
+
+            complete = false;
+            round += 1;
+
+            for (let i = 0; i < myword.length; i++) {
+                myword[i] = '';
+                for (let j = 0; j < wordLength; j++) {
+                    myword[i] += ' ';
                 }
             }
-            if(round < 3) {
-                newBoard = {...gameBoard};
-                //Add apces to fill array to 5 letters
-                for (let i = 0; i < wordLength; i++) {
-                    if(myword[guessCount].length < wordLength) {
-                        myword[guessCount] += ' ';
-                    }
+
+            setTime((prevTime: number) => timeDuration[round]);
+            if (round >= 3) {
+                if (played == false) {
+                    updateLocalstorage();
+                    played = true;
                 }
-                //fill board with current guesses
-                for (let i = 1; i < (wordsPerRound+1); i++) {
-                    if( myword[i] != undefined ) {
-                        newBoard[i] = myword[i].split('');
-                    }
+                root.render(<Game />);
+            } else {
+                guessCount = 1;
+            }
+
+        } else {
+            
+            //DELETE LETTER
+            if (letter == "Backspace" || letter == "DEL") {
+                myword[guessCount] = myword[guessCount].trim().slice(0, -1);
+            }
+            
+            //check that input is a letter and add if word len in less that 5
+            if (/[a-zA-Z]/.test(letter) == true && letter.length < 2) {
+                myword[guessCount] = myword[guessCount].trim();
+                if (myword[guessCount].length < wordLength) {
+                    myword[guessCount] += letter.toLowerCase();
                 }
-                //Add new guess to board if num of guesses are below wordsPerRound
-                if(guessCount < (wordsPerRound+1)) {
-                    newBoard[guessCount] = myword[guessCount].split('');
+            }
+
+            if (myword[guessCount].trim().length >= wordLength) {
+                // If the words is a valid word
+                if (validWords.includes(myword[guessCount]) == true) {
+
+                    guessCount += 1;
+                    myword[guessCount] = '';
+
+                } else {
+                    invalid = true;
                 }
-                setGameBoard(newBoard);
             }
 
         }
-        
+
+        //If max round has not been reached
+        if (round < 3) {
+            newBoard = { ...gameBoard };
+            //Add apces to fill array to 5 letters
+            for (let i = 0; i < wordLength; i++) {
+                if (myword[guessCount].length < wordLength) {
+                    myword[guessCount] += ' ';
+                }
+            }
+            //fill board with current guesses
+            for (let i = 1; i < (wordsPerRound + 1); i++) {
+                if (myword[i] != undefined) {
+                    newBoard[i] = myword[i].split('');
+                }
+            }
+            //Add new guess to board if num of guesses are below wordsPerRound
+            if (guessCount < (wordsPerRound + 1)) {
+                newBoard[guessCount] = myword[guessCount].split('');
+            }
+            setGameBoard(newBoard);
+        }
+
     }
+    //Prevent round from displaying above 3
     let maxRound: number = round;
-    if(maxRound > 2) {
+    if (maxRound > 2) {
         maxRound = 2;
     }
     return (
-        <div id="board-inner">
+        <div id="board-container">
             <div className="round">
-                Round {round+1}
+                Round {maxRound + 1}
             </div>
             <div id="clock">
                 {fomattedTime}
             </div>
             <div id="board">
-                {Object.entries(gameBoard).map(([row, letter]) => {
+                {Object.entries(gameBoard).map(([row, word]) => {
                     let rowClass: string = 'row';
-                    if(invalid == true && guessCount == (Number(row))) {
+                    if (invalid == true && guessCount == (Number(row))) {
                         rowClass += ' error';
                         invalid = false;
                     }
-                    return(
+                    return (
                         <div key={row} className={rowClass}>
-                            {letter.map((letter: string, i: number) => {
+                            {word.map((letter: string, index: number) => {
                                 let letterClass = 'cell';
-                                if(row.toString() < guessCount.toString()) {
-                                    if(letter == words[maxRound][i]) {
+                                if (row.toString() < guessCount.toString()) {
+
+                                    //Check of letter is correct 
+                                    if (letter == words[maxRound][index]) {
                                         letterClass += ' win';
-                                    } else if(words[maxRound].includes(letter) && letter != '') {
-                                        letterClass += ' in';
                                     } else {
                                         letterClass += ' wrong';
                                     }
+
+                                    //Create array(newArray) of all remaining letters that are incorrect or misplaced
+                                    let newArray: String[] = [...words[maxRound]];
+                                    for (let j = 0; j < word.length; j++) {
+                                        if (word[j] == words[maxRound][j]) {
+                                            let indexOfChar = newArray.findIndex(element => element.includes(word[j]));
+                                            newArray.splice(indexOfChar, 1);
+                                        }
+                                    }
+
+                                    //Check newArray to see if any guessed letters are misplaced
+                                    if (letter != words[maxRound][index] && newArray.includes(letter)) {
+                                        let letterInNewArray = newArray.reduce((acc, str) => acc + [...str].filter(c => c === letter).length, 0);
+                                        let letterInGuess = word.reduce((acc: any, str: any) => acc + [...str].filter(c => c === letter).length, 0);
+                                        //Check if number of misplaced letters to prevent duplicate. 
+                                        if (letterInGuess > letterInNewArray) {
+                                            let count = 0;
+                                            for (let i = 0; i < word.length; i++) {
+                                                if(word[i] === letter) {
+                                                    count ++;
+                                                    if(count === letterInNewArray) {
+                                                        if(index <= count) {
+                                                            letterClass += ' in';
+                                                        }
+                                                        //end loop if max reached
+                                                        i = word.length;
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            letterClass += ' in';
+                                        }
+                                    }
+
                                 }
-                                return(
-                                    <p key={i} className={letterClass}>{letter}</p>
+                                return (
+                                    <p key={index} className={letterClass}>{letter}</p>
                                 )
                             })}
                         </div>
-                    )}
+                    )
+                }
                 )}
             </div>
             <div className='keyboard-container'>
@@ -466,38 +499,39 @@ const Key = (props: KeyProps) => {
     const { keyValue, index, clickKey } = props;
     switch (keyValue) {
         case 'ENT':
-            return (<div key={index} className='key key-dbl' onClick={(e) => clickKey(keyValue,e)}>{keyValue}</div>)
+            
+            return (<div key={index} className='key key-dbl' onClick={(e) => clickKey(keyValue, e)}>{keyValue}</div>)
         case 'DEL':
-            return (<div key={index} className='key key-dbl' onClick={(e) => clickKey(keyValue,e)}>{keyValue}</div>)
+            return (<div key={index} className='key key-dbl' onClick={(e) => clickKey(keyValue, e)}>{keyValue}</div>)
         default:
 
-        for (let i = 1; i < guessCount; i++) {
+            for (let i = 1; i < guessCount; i++) {
 
-            if(words[round] != undefined) {
-                //If contains letter
-                if(myword[i].includes(keyValue) == true) {
-                    if(words[round].includes(keyValue) == true) {
-                        keyClass += " yellow";
-                    } else {
-                        keyClass += " dark-grey";
+                if (words[round] != undefined) {
+                    //If contains letter
+                    if (myword[i].includes(keyValue) == true) {
+                        if (words[round].includes(keyValue) == true) {
+                            keyClass += " yellow";
+                        } else {
+                            keyClass += " dark-grey";
+                        }
                     }
-                }
-                for(let j = 0; j < myword[guessCount-1].length; j++) {
-                    if(myword[i][j] == words[round][j] && myword[i][j] == keyValue) {
-                        keyClass += " green";
+                    for (let j = 0; j < myword[guessCount - 1].length; j++) {
+                        if (myword[i][j] == words[round][j] && myword[i][j] == keyValue) {
+                            keyClass += " green";
+                        }
                     }
                 }
             }
-        }
 
-        return (<div key={index} className={keyClass} onClick={(e) => clickKey(keyValue,e)}>{keyValue}</div>)
+            return (<div key={index} className={keyClass} onClick={(e) => clickKey(keyValue, e)}>{keyValue}</div>)
 
     }
 };
 
 function updateLocalstorage() {
     // console.log( words, results );
-    if(localStorage.getItem("speedlePlayed") == null) {
+    if (localStorage.getItem("speedlePlayed") == null) {
         //SET DEFAULTS
         localStorage.setItem("speedlePlayed", "true");
         localStorage.setItem("speedlePlayedDate", formatDate());
@@ -517,17 +551,17 @@ function updateLocalstorage() {
         // console.log(results[i+1] + ":" + words[i]);
         let resultsWord = '';
         //result letters to word
-        for (let j = 0; j < results[i+1].length; j++) {
-            resultsWord += results[i+1][j];
+        for (let j = 0; j < results[i + 1].length; j++) {
+            resultsWord += results[i + 1][j];
         }
         //If result word matches add 1
-        if(resultsWord == words[i]) {
-            addLocal( "speedleRoundWin" + i );
+        if (resultsWord == words[i]) {
+            addLocal("speedleRoundWin" + i);
         }
     }
-    localStorage.setItem("speedleRoundWinPercent0", toPercent( localStorage.getItem("speedleRoundWin0") ) );
-    localStorage.setItem("speedleRoundWinPercent1", toPercent( localStorage.getItem("speedleRoundWin1") ) );
-    localStorage.setItem("speedleRoundWinPercent2", toPercent( localStorage.getItem("speedleRoundWin2") ) );
+    localStorage.setItem("speedleRoundWinPercent0", toPercent(localStorage.getItem("speedleRoundWin0")));
+    localStorage.setItem("speedleRoundWinPercent1", toPercent(localStorage.getItem("speedleRoundWin1")));
+    localStorage.setItem("speedleRoundWinPercent2", toPercent(localStorage.getItem("speedleRoundWin2")));
 }
 
 function addLocal(s: string) {
@@ -543,17 +577,17 @@ function clearLocalstorage() {
 }
 
 function toPercent(i: any) {
-    let num: number = (Number(i) /  Number(localStorage.getItem("speedleGamesPlayed")) * 100);
+    let num: number = (Number(i) / Number(localStorage.getItem("speedleGamesPlayed")) * 100);
     return Math.trunc(num).toString();
 }
 
 function updateEmojiArr() {
     let date = new Date().toLocaleDateString();
-    let out: string = 'SPEEDLE \n' + date  + '\n';
+    let out: string = 'SPEEDLE \n' + date + '\n';
     for (let i = 0; i < 3; i++) {
         let guess = words[i].split('');
         for (let j = 0; j < 5; j++) {
-            if( guess[j] == results[i+1][j] ) {
+            if (guess[j] == results[i + 1][j]) {
                 out += emojis[i];
             } else {
                 out += emojis[3];
@@ -571,7 +605,7 @@ function share() {
 function formatTime(t: number) {
     let min = Math.floor(t / 60);
     let sec = (t - (min * 60)).toString();
-    if(sec.length < 2) {
+    if (sec.length < 2) {
         sec = "0" + sec;
     }
     return min + ":" + sec;
@@ -598,7 +632,7 @@ function browserTheme() {
         document.documentElement.style.setProperty("--black", "#fafafa");
         document.documentElement.style.setProperty("--shadow", "#ffffff00");
         document.documentElement.style.setProperty("--light-grey", "#bfbfbf");
-        
+
     } else {
         console.log('light');
     }
@@ -608,9 +642,7 @@ const container = document.getElementById('app-root')!;
 const root = ReactDOM.createRoot(container);
 
 async function loadData() {
-
     browserTheme();
-
     const response = await fetch('data.json');
     const jsonData = await response.json();
     // console.log(jsonData);
@@ -619,16 +651,14 @@ async function loadData() {
     data.id1 = jsonData.id1;
     data.id2 = jsonData.id2;
     data.id3 = jsonData.id3;
-    words = [validWords[data.id1],validWords[data.id2],validWords[data.id3]];
+    words = [validWords[data.id1], validWords[data.id2], validWords[data.id3]];
     console.log(words);
-    if(localStorage.getItem("speedlePlayedDate") == data.date) {
+    if (localStorage.getItem("speedlePlayedDate") == data.date) {
         played = true;
     } else {
         played = false;
     }
-    
     root.render(<Game />);
-
 }
-  
+
 loadData();
