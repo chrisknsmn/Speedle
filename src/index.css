@@ -274,12 +274,10 @@ h1 {
 }
 @media only screen and (max-width: 800px) {
     .cell {
-        font-size: 3vh;
-        padding-top: 1.8vh;
-        max-width: auto;
-        margin: 5px;
+        font-size: 2rem;
+        padding-top: 1.2rem;
         width: auto;
-        /* height: auto; */
+        max-width: 20%;
     }
 }
 
