@@ -90,6 +90,7 @@ const Game = () => {
             setShowResults(false);
         }
     }
+    
     useEffect(() => {
         if (round >= 2 || played == true) {
             setShowResults(true);
@@ -97,9 +98,10 @@ const Game = () => {
             setShowRules(true);
         }
     }, [round]);
+
     return (
-        <div id="page" onClick={closeCard}>
-            <header>
+        <div onClick={closeCard}>
+            <div className='header'>
                 <h1>SPEEDLE</h1>
                 {/* <button onClick={clearLocalstorage}>Clear</button> */}
                 <div className="header-btns">
@@ -110,7 +112,7 @@ const Game = () => {
                         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 13.25V1.5H.5v12a1.24 1.24 0 0 0 1.22 1H15.5v-1.25z" /><path d="M3.15 8H4.4v3.9H3.15zm3.26-4h1.26v7.9H6.41zm3.27 2h1.25v5.9H9.68zm3.27-3.5h1.25v9.4h-1.25z" /></svg>
                     </button>
                 </div>
-            </header>
+            </div>
             {/* <button onClick={clearLocalstorage}>reset</button> */}
             <div id="start-div" onClick={onClick}>
                 {showStart && played != true ? <Start /> : null}
@@ -405,12 +407,17 @@ const PrintBoard = () => {
     }
     return (
         <div id="board-container">
-            <div className="round">
-                Round {maxRound + 1}
+
+            <div className='time-info'>
+                <div className="round">
+                    Round {maxRound + 1}
+                </div>
+                <div id="clock">
+                    {fomattedTime}
+                </div>
             </div>
-            <div id="clock">
-                {fomattedTime}
-            </div>
+
+
             <div id="board">
                 {Object.entries(gameBoard).map(([row, word]) => {
                     let rowClass: string = 'row';
@@ -489,7 +496,6 @@ const PrintBoard = () => {
             </div>
         </div>
     );
-
 };
 
 const Key = (props: KeyProps) => {
@@ -499,14 +505,11 @@ const Key = (props: KeyProps) => {
     const { keyValue, index, clickKey } = props;
     switch (keyValue) {
         case 'ENT':
-            
             return (<div key={index} className='key key-dbl' onClick={(e) => clickKey(keyValue, e)}>{keyValue}</div>)
         case 'DEL':
             return (<div key={index} className='key key-dbl' onClick={(e) => clickKey(keyValue, e)}>{keyValue}</div>)
         default:
-
             for (let i = 1; i < guessCount; i++) {
-
                 if (words[round] != undefined) {
                     //If contains letter
                     if (myword[i].includes(keyValue) == true) {
@@ -523,9 +526,7 @@ const Key = (props: KeyProps) => {
                     }
                 }
             }
-
             return (<div key={index} className={keyClass} onClick={(e) => clickKey(keyValue, e)}>{keyValue}</div>)
-
     }
 };
 
@@ -625,14 +626,11 @@ function rand(max: number) {
 
 function browserTheme() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        // dark mode
-        // document.documentElement.style.setProperty("--white", getComputedStyle(document.documentElement).getPropertyValue("--black"));
         console.log('dark');
         document.documentElement.style.setProperty("--white", "#2B2B2B");
         document.documentElement.style.setProperty("--black", "#fafafa");
         document.documentElement.style.setProperty("--shadow", "#ffffff00");
         document.documentElement.style.setProperty("--light-grey", "#bfbfbf");
-
     } else {
         console.log('light');
     }
@@ -645,7 +643,6 @@ async function loadData() {
     browserTheme();
     const response = await fetch('data.json');
     const jsonData = await response.json();
-    // console.log(jsonData);
     data.date = jsonData.date;
     data.time = jsonData.time;
     data.id1 = jsonData.id1;

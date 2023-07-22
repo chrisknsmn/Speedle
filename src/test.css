@@ -23,73 +23,51 @@
     --border: #fafafa;
 }
 
-.mar-r-0 {
-    margin-right: 0 !important;
-}
-.mar-b-0 {
-    margin-bottom: 0 !important;
-}
-.mar-t-0 {
-    margin-top: 0px !important;
-}
-.mar-tb-0 {
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-}
-
-* {
-    box-sizing: border-box !important;
-}
 html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow-y: hidden !important;
-    background-color: grey;
-    color: var(--black);
-    background-color: var(--white);
-    font-family: Arial, Helvetica, sans-serif;
-}
-body::-webkit-scrollbar{
-    display: none !important;
-}
-#app-root::-webkit-scrollbar {
-    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: solid red;
+    
+    height: 100% !important;
+    max-height: 100% !important;
 }
 
 body {
+    color: #2b2b2b;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-}
+    color: var(--black);
+    background-color: var(--white);
+    font-family: 'Open Sans', sans-serif;
 
-#app-root {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    border: solid red;
 }
-
 .header {
-    height: 10vh;
-    text-align: center;
-    overflow: hidden;
+    background-color: var(--white);
+    color: var(--black);
+
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    border: solid red;
 }
 h1 {
-    margin: 0;
-    height: 100%;
-    font-size: 7vh;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
     font-family: 'Alkatra', cursive;
+    line-height: 3rem;
 }
 @media only screen and (max-width: 640px) {
     h1 {
-        margin-top: 1.5vh;
-        font-size: 3vh;
+        font-size: 1.4rem;
     }
 }
-
 .header-btns {
     position: absolute;
     top: 20px;
@@ -145,6 +123,22 @@ h1 {
 .close-btn:hover svg {
     fill: var(--grey-border);
 }
+.mar-r-0 {
+    margin-right: 0 !important;
+}
+.mar-b-0 {
+    margin-bottom: 0 !important;
+}
+.mar-t-0 {
+    margin-top: 0px !important;
+}
+.mar-tb-0 {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+.mar-t {
+    margin-top: 10px;
+}
 
 .show {
     display: block !important;
@@ -174,112 +168,106 @@ h1 {
     cursor: pointer;
     background-color: rgb(138, 183, 138);
 }
-
-.header-btns {
-    position: absolute;
-    top: 20px;
-    right: 15px;
-    display: flex;
-}
-.rules-btn {
-    cursor: pointer;
-    border: none;
-    font-size: 1.4rem;
-    transition: 0.5s;
-    background-color: var(--white);
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.rules-btn:hover {
-    color: var(--grey-border);
-}
-.rules-btn svg {
-    fill: var(--black);
-    height: 25px;
-    width: 25px;
-    transition: all .2s ease-in-out;
-}
-.rules-btn svg:hover {
-    fill: var(--grey-border);
-}
-
-#board-container {
-    height: 90vh;
-
-    display: flex;
-    flex-direction: column;
+.round {
+    max-width: 80px;
+    margin: 0 auto;
+    margin-top: 15px;
 }
 
 .time-info {
-    height: 10%;
-    text-align: center;
-}
-.round {
-    font-size: 2vh;
-    padding-top: 1vh;
-}
-#clock {
-    font-size: 3vh;
+    height: 5vh;
 }
 
-#board {
-    height: 70%;
-
+/* GAMRE BOARD */
+#app-root {
+    overflow: hidden;
+    position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    overflow: scroll !important;
+    box-sizing: content-box;
 
-}
-.keyboard-container {
-    height: 20%;
-    display: flex;
-
-    padding: 5px;
-}
-.keyboard {
-    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
     height: 100% !important;
+    max-height: 100% !important;
 
-    display: flex;
-    flex-direction: column;
+    border: solid blue;
 
-    max-width: 800px;
-    margin: 0 auto;
+}
+body::-webkit-scrollbar{
+    display: none !important;
+}
+#app-root::-webkit-scrollbar {
+    display: none !important;
 }
 
-/* BOARD */
+#page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#board-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 95vh !important;
+}
+#board {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 60vh;
+}
+
+/* .keyboard-container {} */
 .row {
     width: 100%;
     height: 100%;
+
+    flex: 2;
     display: flex;
-    max-width: 600px;
+
+    max-width: 500px;
     margin: 0 auto;
-    align-items: center;
-    padding-top: 3px;
-    padding-bottom: 3px;
+
+    height: 10%;
 }
+
 .cell {
-    border: solid red;
-    height: 100%;
-    border-radius: 100px;
-    aspect-ratio: 1/1;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 5vh;
-    padding-top: 1vh;
     border: 3px solid var(--grey-border);
     background-color: var(--light-grey);
+    border-radius: 50px;
+    text-align: center;
     color: #2B2B2B;
+
+    aspect-ratio: 1/1;
+    /* height: 100%; */
+    width: 100%;
+
+    /* margin: 0 auto; */
+    margin: 0px 5px 0px;
+
+    font-size: 1.8rem;
+    line-height: 5rem;
+
 }
-@media only screen and (max-width: 800px) {
+
+@media only screen and (max-width: 415px) {
+    #board {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
     .cell {
-        font-size: 3vh;
-        padding-top: 1.8vh;
-        max-width: auto;
+        aspect-ratio: auto;
+        height: auto;
+        width: 100%;
         margin: 5px;
-        width: auto;
-        /* height: auto; */
+        line-height: 3.5rem;
     }
 }
 
@@ -324,32 +312,71 @@ h1 {
     40% { transform: translate(3px, 0px) rotate(0deg); }
     60% { transform: translate(-3px, 0px) rotate(0deg); }
 }
+/* TYPING KEYBOARD */
 
-/* KEYBOARD */
-.row1 {
-    height: 33%;
+.keyboard {
+    padding: 10px;
+    margin: 0 auto;
+    background-color: var(--white);
+    max-width: 600px;
+    height: 15vh;
+
     display: flex;
+    flex-direction: column;
+}
+.row1 {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    height: 30%;
 }
 .row2 {
-    height: 33%;
     display: flex;
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 5px;
+    height: 30%;
 }
 .row3 {
-    height: 33%;
     display: flex;
+    margin: 0 auto;
+    margin-top: 5px;
+    width: 100%;
+    height: 30%;
 }
-
 .key {
     width: 100%;
-    margin: 2px;
-    border-radius: 5px;
+    background-color: #E3E1E1;
     text-align: center;
-    padding-top: 10px;
-    color: #2B2B2B;
-    background-color: #fafafa;
-}
+    border-radius: 5px;
 
-/* CARDS */
+    margin-right: 3px;
+    transition: 0.2s;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    color: #2B2B2B;
+}
+.key:hover {
+    cursor: pointer;
+}
+.key-dbl {
+    width: 100%;
+}
+@media only screen and (max-width: 640px) {
+    .key:hover {
+        background-color: #E3E1E1;
+        cursor: pointer;
+    }
+}
+#clock {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 330px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 .played-num {
     font-size: 32px;
     margin-top: 0px;
@@ -390,6 +417,7 @@ h1 {
     height: 100%;
     background-color: #9E9E9E;
     transition: width 1s ease-in-out;
+    /* overflow: scroll !important; */
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -436,37 +464,25 @@ h1 {
 
 }
 .result-card {
+    width: 80%;
+    max-width: 300px;
+    min-height: 300px;
+    position: absolute;
+    margin: 0 auto;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
+    top: 20%;
     padding: 30px;
     background-color: var(--white);
     box-shadow: 0px 4px 4px var(--shadow);
     border: 1px solid var(--border);
     border-radius: 5px;
-    position: absolute;
-    margin: 0 auto;
-    height: 80% !important;
-    overflow-y: scroll;
-    max-height: 400px;
-    top: 15vh;
-
-    width: 90%;
-
-    max-width: 400px;
-    
 }
 .result-card-inner {
     max-width: 300px;
     margin: 0 auto;
 }
-.result-card::-webkit-scrollbar{
-    display: none !important;
-}
-.result-card::-webkit-scrollbar {
-    display: none !important;
-}
-
 .showCard {
     transition: all .2s ease-in-out;
     animation: .2s ease-out 0s 1 slideIn;
