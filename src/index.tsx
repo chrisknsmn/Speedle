@@ -181,14 +181,14 @@ const Results = ({ showResults, setShowResults }: ResultProps) => {
                 <button className='close-btn' onClick={() => setShowResults(!showResults)} aria-label="close">
                     <svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path d="m14.41 3.27-.82-.94L8 7.17 2.41 2.33l-.82.94L7.05 8l-5.46 4.73.82.94L8 8.83l5.59 4.84.82-.94L8.95 8l5.46-4.73z" /></svg>
                 </button>
-                <h2 className='mar-t-0'>Statistics</h2>
+                <h2>Statistics</h2>
                 <div>
                     {played && (
-                        <div>
+                        <div className='show-words'>
                             <h3>Today's words:</h3>
-                            <p className='mar-tb-0'>🟢 {words[0]}</p>
-                            <p className='mar-tb-0'>🟡 {words[1]}</p>
-                            <p className='mar-tb-0'>🔴 {words[2]}</p>
+                            <p>🟢 {words[0]}</p>
+                            <p>🟡 {words[1]}</p>
+                            <p>🔴 {words[2]}</p>
                         </div>
                     )}
                 </div>
