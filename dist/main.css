@@ -1,41 +1,32 @@
 @import url(https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&family=Open+Sans&display=swap);
+/* 
+CONTENTS
+VARIABLES ----- line 12
+GLOBAL -------- line 30
+HEADER -------- line 70
+BOARD --------- line 167
+KEYBOARD ------ line 265
+*/
+
+/* VARIABLES */
 :root {  
     --black: #2B2B2B;
     --white: #fafafa;
-
     --light-grey: #fafafa;
     --grey: #dddddd;
     --grey-border: #9E9E9E;
-
     --green: #38AA38;
     --green-border: #258A25;
-
     --yellow: #FFFF00;
     --yellow-border: #AAB600;
-
     --red: #DE1414;
     --red-border: #B80909;
-
     --shadow: #9E9E9E;
     --cell: #d7d7d7;
-
     --border: #fafafa;
 }
 
-.mar-r-0 {
-    margin-right: 0 !important;
-}
-.mar-b-0 {
-    margin-bottom: 0 !important;
-}
-.mar-t-0 {
-    margin-top: 0px !important;
-}
-.mar-tb-0 {
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-}
-
+/* GLOBAL */
 * {
     box-sizing: border-box !important;
 }
@@ -55,14 +46,12 @@ body::-webkit-scrollbar{
 #app-root::-webkit-scrollbar {
     display: none !important;
 }
-
 body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
 }
-
 #app-root {
     margin: 0;
     padding: 0;
@@ -70,7 +59,14 @@ body {
     width: 100%;
     overflow: hidden;
 }
+.show {
+    display: block !important;
+}
+.hide {
+    display: none !important;
+}
 
+/* HEADER */
 .header {
     height: 10vh;
     text-align: center;
@@ -88,7 +84,6 @@ h1 {
         font-size: 3vh;
     }
 }
-
 .header-btns {
     position: absolute;
     top: 20px;
@@ -144,13 +139,6 @@ h1 {
 .close-btn:hover svg {
     fill: var(--grey-border);
 }
-
-.show {
-    display: block !important;
-}
-.hide {
-    display: none !important;
-}
 #start {
     text-align: center;
     padding: 20px;
@@ -174,41 +162,13 @@ h1 {
     background-color: rgb(138, 183, 138);
 }
 
-.header-btns {
-    position: absolute;
-    top: 20px;
-    right: 15px;
-    display: flex;
-}
-.rules-btn {
-    cursor: pointer;
-    border: none;
-    font-size: 1.4rem;
-    transition: 0.5s;
-    background-color: var(--white);
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.rules-btn:hover {
-    color: var(--grey-border);
-}
-.rules-btn svg {
-    fill: var(--black);
-    height: 25px;
-    width: 25px;
-    transition: all .2s ease-in-out;
-}
-.rules-btn svg:hover {
-    fill: var(--grey-border);
-}
 
+/* BOARD */
 #board-container {
     height: 90vh;
-
     display: flex;
     flex-direction: column;
 }
-
 .time-info {
     height: 10%;
     text-align: center;
@@ -220,34 +180,14 @@ h1 {
 #clock {
     font-size: 3vh;
 }
-
 #board {
     height: 70%;
-
     display: flex;
     flex-direction: column;
     padding-top: 10px;
     padding-bottom: 10px;
 
 }
-.keyboard-container {
-    height: 20%;
-    display: flex;
-
-    padding: 5px;
-}
-.keyboard {
-    width: 100%;
-    height: 100% !important;
-
-    display: flex;
-    flex-direction: column;
-
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* BOARD */
 .row {
     width: 100%;
     height: 100%;
@@ -279,7 +219,6 @@ h1 {
         max-width: 20%;
     }
 }
-
 .wrong {
     transition: 1s;
     background-color: var(--grey);
@@ -323,6 +262,19 @@ h1 {
 }
 
 /* KEYBOARD */
+.keyboard-container {
+    height: 20%;
+    display: flex;
+    padding: 5px;
+}
+.keyboard {
+    width: 100%;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+}
 .row1 {
     height: 33%;
     display: flex;
@@ -335,7 +287,6 @@ h1 {
     height: 33%;
     display: flex;
 }
-
 .key {
     width: 100%;
     margin: 2px;
@@ -354,6 +305,13 @@ h1 {
 }
 .results-inner {
     text-align: center;
+}
+.results-inner h2 {
+    margin-top: 0px !important;
+}
+.show-words p {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }
 .round-row {
     display: flex;
@@ -390,7 +348,6 @@ h1 {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-
 .red {
     background-color: var(--red);
 }
@@ -413,7 +370,6 @@ h1 {
     cursor: pointer;
     border-radius: 5px;
     transition: 0.5s;
-
     position: relative;
 }
 #share-btn:hover {
@@ -423,10 +379,8 @@ h1 {
     position: absolute;
     top: 0px;
     right: 0px;
-    
     color: black;
     background-color: var(--grey-border);
-
     border-radius: 5px;
     width: auto;
     padding: 5px;
@@ -447,11 +401,8 @@ h1 {
     overflow-y: scroll;
     max-height: 400px;
     top: 15vh;
-
     width: 90%;
-
     max-width: 400px;
-    
 }
 .result-card-inner {
     max-width: 300px;
