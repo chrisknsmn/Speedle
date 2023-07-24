@@ -626,7 +626,7 @@ function rand(max: number) {
 
 function browserTheme() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        console.log('dark');
+        // console.log('dark');
         document.documentElement.style.setProperty("--white", "#2B2B2B");
         document.documentElement.style.setProperty("--black", "#fafafa");
         document.documentElement.style.setProperty("--shadow", "#ffffff00");
